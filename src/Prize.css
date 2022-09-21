@@ -1,0 +1,91 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Do Hyeon", sans-serif;
+  background: #7049f7;
+}
+
+.title {
+  text-align: center;
+  margin: 1.2em 0;
+  font-size: 2em;
+  color: #fbfffe;
+  text-transform: uppercase;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 880px;
+  margin: 20px auto;
+}
+
+.square {
+  border: 1px solid lightpink;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  /* background: #eb73b2; */
+  border-radius: 9px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.square:not(:nth-child(6n)) {
+    margin-right: 10px;
+  }
+
+.square:not(:nth-child(n + 8)) {
+    margin-bottom: 10px;
+  }
+
+.is-active {
+    border: 12px solid gold;
+  }
+
+
+.square__content {
+  font-size: 2.8em;
+}
+
+.square__start-btn {
+  background: gold;
+  color: #e97573;
+  font-size: 2em;
+  cursor: pointer;
+  /* flex: 0 0 390px; */
+}
+  .square__start-btn:hover {
+    background: lighten(gold, 25%);
+  }
+  @media(min-width: 370px){
+    .square {
+      height: 100px;
+    }
+  }
+  @media(min-width: 412px){
+    .square {
+      height: 120px;
+    }
+  }
+  @media(min-width: 540px){
+    .square {
+      height: 150px;
+    }
+  }
+  @media(min-width: 662px){
+    .square {
+      height: 190px;
+    }
+  }
+  @media(min-width: 992px){
+    .square {
+      height: 200px;
+  }
+}
