@@ -77,9 +77,74 @@ const prizes = [
     image: "/prizes/prize15.png",
     order: 14,
   },
+  {
+    text: "p",
+    image: "/prizes/prize10.png",
+    order: 15,
+  },
+  {
+    text: "q",
+    image: "/prizes/prize11.png",
+    order: 16,
+  },
+  {
+    text: "r",
+    image: "/prizes/prize12.png",
+    order: 17,
+  },
+  {
+    text: "s",
+    image: "/prizes/prize13.png",
+    order: 18,
+  },
+  {
+    text: "t",
+    image: "/prizes/prize14.png",
+    order: 19,
+  },
+  {
+    text: "u",
+    image: "/prizes/prize15.png",
+    order: 20,
+  },
+  {
+    text: "v",
+    image: "/prizes/prize9.png",
+    order: 21,
+  },
+  {
+    text: "w",
+    image: "/prizes/prize8.png",
+    order: 22,
+  },
+  {
+    text: "x",
+    image: "/prizes/prize7.png",
+    order: 23,
+  },
+  {
+    text: "y",
+    image: "/prizes/prize6.png",
+    order: 24,
+  },
+  {
+    text: "z",
+    image: "/prizes/prize5.png",
+    order: 25,
+  },
+  {
+    text: "aa",
+    image: "/prizes/prize4.png",
+    order: 26,
+  },
+  {
+    text: "ab",
+    image: "/prizes/prize3.png",
+    order: 27,
+  },
 ];
-const total_items = 10;
-const minimum_jumps = 30;
+const total_items = 24;
+const minimum_jumps = 70;
 
 const Prize = () => {
   const [list, setList] = useState([]);
@@ -127,15 +192,15 @@ const Prize = () => {
   }
   useEffect(() => {
     console.log("called");
-    if (prizes.length === 15) {
+    if (prizes.length === 28) {
       loadList();
     }
   }, []);
   function loadList() {
-    let prizeOrder = 8;
+    let prizeOrder = 19;
     let tempList = prizes;
     console.log(tempList);
-    while (tempList.length > 10) {
+    while (tempList.length > 24) {
       let random = Math.floor(Math.random() * 15);
       console.log(random);
       if (tempList[random]?.order !== prizeOrder) {
@@ -187,23 +252,6 @@ const Prize = () => {
               >
                 <div className="square__content"></div>
               </div>
-            </section>
-            <section className="container" id="js-lotto">
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[9].image})` }}
-                data-order="9"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square square__start-btn"
-                id="js-start"
-                onClick={() => controllSpeed()}
-              >
-                <div>START</div>
-              </div>
-
               <div
                 className="square"
                 style={{ backgroundImage: `url(${list[4].image})` }}
@@ -215,15 +263,69 @@ const Prize = () => {
             <section className="container" id="js-lotto">
               <div
                 className="square"
-                style={{ backgroundImage: `url(${list[8].image})` }}
-                data-order="8"
+                style={{ backgroundImage: `url(${list[23].image})` }}
+                data-order="23"
               >
                 <div className="square__content"></div>
               </div>
               <div
                 className="square"
-                style={{ backgroundImage: `url(${list[7].image})` }}
-                data-order="7"
+                style={{ backgroundImage: `url(${list[14].image})` }}
+                data-order="14"
+              >
+                <div className="square__content"></div>
+              </div>
+              <div
+                className="square"
+                style={{ backgroundImage: `url(${list[13].image})` }}
+                data-order="13"
+              >
+                <div className="square__content"></div>
+              </div>
+              <div
+                className="square"
+                style={{ backgroundImage: `url(${list[12].image})` }}
+                data-order="12"
+              >
+                <div className="square__content"></div>
+              </div>
+              <div
+                className="square"
+                style={{ backgroundImage: `url(${list[5].image})` }}
+                data-order="5"
+              >
+                <div className="square__content"></div>
+              </div>
+            </section>
+            <section className="container" id="js-lotto">
+              <div
+                className="square"
+                style={{ backgroundImage: `url(${list[22].image})` }}
+                data-order="22"
+              >
+                <div className="square__content"></div>
+              </div>
+              <div
+                className="square"
+                style={{ backgroundImage: `url(${list[15].image})` }}
+                data-order="15"
+              >
+                <div className="square__content"></div>
+              </div>
+              <div
+                className="square square__start-btn"
+                style={{ backgroundImage: "url(/start-button.png)" }}
+                id="js-start"
+                onClick={() => controllSpeed()}
+              >
+                {/* <div>👉☠️👾</div> */}
+                {/* <image src="http://localhost:3000/start-button.png" /> */}
+              </div>
+
+              <div
+                className="square"
+                style={{ backgroundImage: `url(${list[11].image})` }}
+                data-order="11"
               >
                 <div className="square__content"></div>
               </div>
@@ -234,10 +336,77 @@ const Prize = () => {
               >
                 <div className="square__content"></div>
               </div>
+            </section>
+            <section className="container" id="js-lotto">
               <div
                 className="square"
-                style={{ backgroundImage: `url(${list[5].image})` }}
-                data-order="5"
+                style={{ backgroundImage: `url(${list[21].image})` }}
+                data-order="21"
+              >
+                <div className="square__content"></div>
+              </div>
+              <div
+                className="square"
+                style={{ backgroundImage: `url(${list[16].image})` }}
+                data-order="16"
+              >
+                <div className="square__content"></div>
+              </div>
+              <div
+                className="square"
+                style={{ backgroundImage: `url(${list[17].image})` }}
+                data-order="17"
+              >
+                <div className="square__content"></div>
+              </div>
+              <div
+                className="square"
+                style={{ backgroundImage: `url(${list[10].image})` }}
+                data-order="10"
+              >
+                <div className="square__content"></div>
+              </div>
+              <div
+                className="square"
+                style={{ backgroundImage: `url(${list[7].image})` }}
+                data-order="7"
+              >
+                <div className="square__content"></div>
+              </div>
+            </section>
+            <section className="container" id="js-lotto">
+              <div
+                className="square"
+                style={{ backgroundImage: `url(${list[20].image})` }}
+                data-order="20"
+              >
+                <div className="square__content"></div>
+              </div>
+              <div
+                className="square"
+                style={{ backgroundImage: `url(${list[19].image})` }}
+                data-order="19"
+              >
+                <div className="square__content"></div>
+              </div>
+              <div
+                className="square"
+                style={{ backgroundImage: `url(${list[18].image})` }}
+                data-order="18"
+              >
+                <div className="square__content"></div>
+              </div>
+              <div
+                className="square"
+                style={{ backgroundImage: `url(${list[9].image})` }}
+                data-order="9"
+              >
+                <div className="square__content"></div>
+              </div>
+              <div
+                className="square"
+                style={{ backgroundImage: `url(${list[8].image})` }}
+                data-order="8"
               >
                 <div className="square__content"></div>
               </div>
