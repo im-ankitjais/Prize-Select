@@ -144,7 +144,7 @@ const prizes = [
   },
 ];
 const total_items = 24;
-const minimum_jumps = 70;
+const minimum_jumps = 80;
 
 const Prize = () => {
   const [list, setList] = useState([]);
@@ -165,16 +165,14 @@ const Prize = () => {
     $(`[data-order="${currentIndex}"]`).addClass("is-active");
     if (jumps > minimum_jumps + 10 && prize === currentIndex) {
       clearTimeout(timer);
-      console.log(`You Have Won a Prize >ext}`);
+      console.log(`You Have Won a Prize ${list[prize].text}`);
       prize = -1;
       jumps = 0;
     } else {
       if (jumps < minimum_jumps) {
         speed -= 5;
       } else if (jumps === minimum_jumps) {
-        // const random_number = generatePrizeNumber();
-        // const random_number = 4;
-        var index = list.findIndex((p) => p.order == prizeOrder);
+        var index = list.findIndex((p) => p.order === prizeOrder);
         console.log("index", index);
         prize = index;
       } else {
@@ -197,21 +195,19 @@ const Prize = () => {
     }
   }, []);
   function loadList() {
-    let prizeOrder = 19;
+    // api call
+    let prizeOrder = 23; // set winner prize order:number
     let tempList = prizes;
-    console.log(tempList);
-    while (tempList.length > 24) {
-      let random = Math.floor(Math.random() * 15);
-      console.log(random);
+    while (tempList.length > total_items) {
+      let random = Math.floor(Math.random() * prizes.length);
       if (tempList[random]?.order !== prizeOrder) {
         tempList.splice(random, 1);
-      } else if (random < 14) {
+      } else if (random < total_items) {
         tempList.splice(random + 1, 1);
       } else {
         tempList.splice(random - 1, 1);
       }
     }
-    console.log(tempList);
     setList(tempList);
     setPrizeOrder(prizeOrder);
     setLoading(false);
@@ -224,192 +220,74 @@ const Prize = () => {
         {!loading && (
           <div>
             <section className="container" id="js-lotto">
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[0].image})` }}
-                data-order="0"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[1].image})` }}
-                data-order="1"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[2].image})` }}
-                data-order="2"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[3].image})` }}
-                data-order="3"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[4].image})` }}
-                data-order="4"
-              >
-                <div className="square__content"></div>
-              </div>
+              {[0, 1, 2, 3, 4].map((order, index) => (
+                <div
+                  className="square"
+                  style={{ backgroundImage: `url(${list[order].image})` }}
+                  data-order={order}
+                >
+                  {/* <div className="square__content">{list[order].text}</div> */}
+                </div>
+              ))}
             </section>
             <section className="container" id="js-lotto">
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[23].image})` }}
-                data-order="23"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[14].image})` }}
-                data-order="14"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[13].image})` }}
-                data-order="13"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[12].image})` }}
-                data-order="12"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[5].image})` }}
-                data-order="5"
-              >
-                <div className="square__content"></div>
-              </div>
+              {[23, 14, 13, 12, 5].map((order, index) => (
+                <div
+                  className="square"
+                  style={{ backgroundImage: `url(${list[order].image})` }}
+                  data-order={order}
+                >
+                  {/* <div className="square__content">{list[order].text}</div> */}
+                </div>
+              ))}
             </section>
             <section className="container" id="js-lotto">
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[22].image})` }}
-                data-order="22"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[15].image})` }}
-                data-order="15"
-              >
-                <div className="square__content"></div>
-              </div>
+              {[22, 15].map((order, index) => (
+                <div
+                  className="square"
+                  style={{ backgroundImage: `url(${list[order].image})` }}
+                  data-order={order}
+                >
+                  {/* <div className="square__content">{list[order].text}</div> */}
+                </div>
+              ))}
               <div
                 className="square square__start-btn"
                 style={{ backgroundImage: "url(/start-button.png)" }}
                 id="js-start"
                 onClick={() => controllSpeed()}
-              >
-                {/* <div>👉☠️👾</div> */}
-                {/* <image src="http://localhost:3000/start-button.png" /> */}
-              </div>
-
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[11].image})` }}
-                data-order="11"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[6].image})` }}
-                data-order="6"
-              >
-                <div className="square__content"></div>
-              </div>
+              ></div>
+              {[11, 6].map((order, index) => (
+                <div
+                  className="square"
+                  style={{ backgroundImage: `url(${list[order].image})` }}
+                  data-order={order}
+                >
+                  {/* <div className="square__content">{list[order].text}</div> */}
+                </div>
+              ))}
             </section>
             <section className="container" id="js-lotto">
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[21].image})` }}
-                data-order="21"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[16].image})` }}
-                data-order="16"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[17].image})` }}
-                data-order="17"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[10].image})` }}
-                data-order="10"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[7].image})` }}
-                data-order="7"
-              >
-                <div className="square__content"></div>
-              </div>
+              {[21, 16, 17, 10, 7].map((order, index) => (
+                <div
+                  className="square"
+                  style={{ backgroundImage: `url(${list[order].image})` }}
+                  data-order={order}
+                >
+                  {/* <div className="square__content">{list[order].text}</div> */}
+                </div>
+              ))}
             </section>
             <section className="container" id="js-lotto">
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[20].image})` }}
-                data-order="20"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[19].image})` }}
-                data-order="19"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[18].image})` }}
-                data-order="18"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[9].image})` }}
-                data-order="9"
-              >
-                <div className="square__content"></div>
-              </div>
-              <div
-                className="square"
-                style={{ backgroundImage: `url(${list[8].image})` }}
-                data-order="8"
-              >
-                <div className="square__content"></div>
-              </div>
+              {[20, 19, 18, 9, 8].map((order, index) => (
+                <div
+                  className="square"
+                  style={{ backgroundImage: `url(${list[order].image})` }}
+                  data-order={order}
+                >
+                  {/* <div className="square__content">{list[order].text}</div> */}
+                </div>
+              ))}
             </section>
           </div>
         )}
@@ -419,3 +297,15 @@ const Prize = () => {
 };
 
 export default Prize;
+
+/*
+Changes to be done when prizes list is changed:
+1. Add prize images in public/prizes folder.
+2. Add parameter like image, order in prizes array.
+1. change total_items value.
+2. in useEffect change prizes.length
+
+Set Prize:
+1. Call api to get prize in loadList Function.
+2. set prize according to order parameter.
+*/
